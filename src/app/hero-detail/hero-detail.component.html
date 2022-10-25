@@ -1,0 +1,12 @@
+<!--subcomponent de heroes-->
+<div *ngIf="hero"> <!-- Se vincula à propriedade do componente hero que é do tipo Hero.
+                        Pode apresentar qualquer herói, não apenas um herói selecionado-->
+
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label for="hero-name">Hero name: </label>
+    <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
+  </div>
+
+</div>
