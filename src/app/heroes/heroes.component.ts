@@ -18,7 +18,7 @@ import { MessageService } from '../message.service';
                             tag HTML que usaremos para representar esse component*/
   templateUrl: './heroes.component.html',/*caminho do arquivo que vai conter o
                             conteúdo visual do component*/
-  styleUrls: ['./heroes.component.css'] /*caminho dos arquivos de estilização*/
+  styleUrls: ['./heroes.component.scss'] /*caminho dos arquivos de estilização*/
 })
 
 export class HeroesComponent implements OnInit {
