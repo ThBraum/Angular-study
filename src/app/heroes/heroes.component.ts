@@ -22,18 +22,12 @@ import { MessageService } from '../message.service';
 })
 
 export class HeroesComponent implements OnInit {
-  /*hero: Hero = {
-    id: 1,
-    name: "Windstorm"
-  };*/
   //heroes = HEROES;
   heroes: Hero[] = [];
-  constructor(private heroService: HeroService) { }
 
   //selectedHero? : Hero;//tipagem=> selectedHero pode não ter nada ou ser do tipo Hero
-
   /*método Constructor -> geralmente utilizado para injeção de dependência */
-
+  constructor(private heroService: HeroService) { }
 
     /*método ngOnInit -> método de callback chamado quando todas as informações
   do componente estiverem carregadas */
@@ -43,6 +37,20 @@ export class HeroesComponent implements OnInit {
 
   getHeroes(): void {
     this.heroService.getHeroes().subscribe(heroes => this.heroes = heroes);
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.heroService.addHero({ name } as Hero)
+      .subscribe(hero => {
+        this.heroes.push(hero);
+      });
+  }
+
+  delete(hero: Hero): void {
+    this.heroes = this.heroes.filter(h => h !== hero);
+    this.heroService.deleteHero(hero.id).subscribe();
   }
 
 }
